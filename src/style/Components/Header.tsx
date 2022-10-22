@@ -11,6 +11,7 @@ export const Nav = styled(motion.nav)`
   font-size: 16px;
   padding: 20px 60px;
   color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 `;
 
 export const Col = styled.div`

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { RecoilRoot } from 'recoil';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Jua from './fonts/Jua-Regular.ttf';
 import { theme } from './style/theme';
 
@@ -66,7 +67,8 @@ body {
   font-family: 'Jua', sans-serif;
   color:black;
   line-height: 1.2;
-  
+  color:${(props) => props.theme.white.darker};
+  background-color: black;
 }
 a {
   text-decoration:none;
@@ -74,11 +76,15 @@ a {
 }
 `;
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <RecoilRoot>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </QueryClientProvider>
   </RecoilRoot>,
 );
