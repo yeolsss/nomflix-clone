@@ -58,11 +58,12 @@ table {
   border-spacing: 0;
 }
 * {
+  font-family: 'Jua', sans-serif;
   box-sizing: border-box;
 }
 body {
   font-weight: 300;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Jua', sans-serif;
   color:black;
   line-height: 1.2;
   
