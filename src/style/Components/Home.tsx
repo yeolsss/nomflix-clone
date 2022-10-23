@@ -1,7 +1,9 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   background-color: black;
+  padding-bottom: 200px;
 `;
 
 export const Loader = styled.div`
@@ -20,6 +22,7 @@ export const Banner = styled.div<{ bgPhoto: string }>`
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
     url(${(props) => props.bgPhoto});
   background-size: cover;
+  background-position: center center;
 `;
 
 export const Title = styled.h2`
@@ -30,4 +33,45 @@ export const Title = styled.h2`
 export const Overview = styled.p`
   font-size: 35px;
   width: 50%;
+`;
+
+export const Slider = styled.div`
+  position: relative;
+  top: -100px;
+`;
+
+export const Row = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  position: absolute;
+  width: 100%;
+`;
+
+export const Box = styled(motion.div)<{ bgPhoto: string }>`
+  background-color: white;
+  background-image: url(${(props) => props.bgPhoto});
+  background-size: cover;
+  background-position: center center;
+  height: 200px;
+  font-size: 66px;
+  &:first-child {
+    transform-origin: center left;
+  }
+  &:last-child {
+    transform-origin: center right;
+  }
+`;
+
+export const Info = styled(motion.div)`
+  padding: 10px;
+  background-color: ${(props) => props.theme.black.lighter};
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  h4 {
+    text-align: center;
+    font-size: 20px;
+  }
 `;
