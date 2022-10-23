@@ -55,6 +55,7 @@ export const Box = styled(motion.div)<{ bgPhoto: string }>`
   background-position: center center;
   height: 200px;
   font-size: 66px;
+  cursor: pointer;
   &:first-child {
     transform-origin: center left;
   }
@@ -74,4 +75,22 @@ export const Info = styled(motion.div)`
     text-align: center;
     font-size: 20px;
   }
+`;
+
+export const Overlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+`;
+
+export const BigMovie = styled(motion.div)`
+  position: absolute;
+  width: 40vw;
+  height: 40vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 `;
