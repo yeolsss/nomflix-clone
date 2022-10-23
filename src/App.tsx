@@ -9,7 +9,9 @@ function App() {
     <Router basename={import.meta.env.BASE_URL}>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />}>
+          <Route path="movies/:id" element={<Home />} />
+        </Route>
         <Route path="/tv" element={<Tv />}></Route>
         <Route path="/search" element={<Search />}></Route>
       </Routes>
