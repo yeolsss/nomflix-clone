@@ -5,7 +5,10 @@ import { useMatch, useNavigate } from 'react-router-dom';
 import { getMovies, IGetMoviesResult } from '../api/api';
 import {
   Banner,
+  BigCover,
   BigMovie,
+  BigOverView,
+  BigTitle,
   Box,
   Info,
   Loader,
@@ -85,6 +88,11 @@ function Home() {
     history(`/movies/${movieId}`);
   };
   const onOverlayClick = () => history('/');
+  const clickMovie =
+    bigMovieMatch?.params.movieId &&
+    data?.results.find(
+      (movie) => movie.id + '' === bigMovieMatch.params.movieId,
+    );
   return (
     <Wrapper>
       {isLoading ? (
@@ -141,7 +149,22 @@ function Home() {
                 <BigMovie
                   style={{ top: scrollY.get() + 100 }}
                   layoutId={bigMovieMatch.params.movieId}
-                ></BigMovie>
+                >
+                  {clickMovie && (
+                    <>
+                      <BigCover
+                        style={{
+                          backgroundImage: `linear-gradient(to top, black,transparent), url(${makeImagePath(
+                            clickMovie.backdrop_path,
+                            'w500',
+                          )})`,
+                        }}
+                      />
+                      <BigTitle>{clickMovie.title}</BigTitle>
+                      <BigOverView>{clickMovie.overview}</BigOverView>
+                    </>
+                  )}
+                </BigMovie>
               </>
             )}
           </AnimatePresence>
